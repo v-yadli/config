@@ -69,20 +69,24 @@ IsWorkstationRDPSession()
 
 ^!f::
 if(IsWorkstationRDPSession()){
+    ;TODO should pass this into the RDP
     return
 }
 WinGetPos, Xpos, Ypos, Width, Height, A
 If (Xpos = 1920 AND YPos = -658)
 {
-    ;Top dock
+    ;Top dock, moving to pinned middle dock
     WinMove, A, , 1920, 0, 1080,1080
+    WinSet, AlwaysOnTop, On, A
 }else if (XPos = 1920 AND YPos = 0)
 {
     ;Middle dock, release it to the center of main screen
     WinMove, A, , 389, 215, 1077, 708
+    WinSet, AlwaysOnTop, On, A
 }else{
     ;Central focus or somewhere else, put it back to the dock area
     WinMove, A, , 1920, -658, 1080, 658
+    WinSet, AlwaysOnTop, Off, A
 }
 return
 
