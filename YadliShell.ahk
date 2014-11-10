@@ -46,6 +46,9 @@ ShellMessageHandler( wParam, lParam )
         If ( Title = "graph014 - Remote Desktop Connection" )
         {
             ExpandWorkstationRDPSession(lParam)
+        }Else
+        {
+            WinSet, AlwaysOnTop, On, A
         }
     }
     return
@@ -67,9 +70,17 @@ IsWorkstationRDPSession()
         return false
 }
 
+^!q::
+if(IsWorkstationRDPSession()){
+    Send ^!q
+    return
+}
+y_ToggleWindowBoarder()
+return
+
 ^!f::
 if(IsWorkstationRDPSession()){
-    ;TODO should pass this into the RDP
+    Send ^!f
     return
 }
 WinGetPos, Xpos, Ypos, Width, Height, A
