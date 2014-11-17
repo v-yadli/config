@@ -49,6 +49,8 @@ ShellMessageHandler( wParam, lParam )
         }Else
         {
             WinSet, AlwaysOnTop, On, A
+            If ( Title = "Virtual Dimension" )
+                y_PlaceVDWindow()
         }
     }
     return
@@ -70,36 +72,61 @@ IsWorkstationRDPSession()
         return false
 }
 
+IsVirtualDimension()
+{
+    WinGetTitle, Title, A
+    If(Title = "Virtual Dimension")
+        return true
+    else
+        return false
+}
+
 ^!q::
 if(IsWorkstationRDPSession()){
     Send ^!q
     return
-}
-y_ToggleWindowBoarder()
+}else if(IsVirtualDimension())
+{
+    y_DisableWindowBoarder()
+}else
+    y_ToggleWindowBoarder()
 return
 
 ^!f::
-if(IsWorkstationRDPSession()){
+if(IsWorkstationRDPSession())
     Send ^!f
+else if (IsVirtualDimension())
+    y_PlaceVDWindow()
+else
+    y_PlaceWindow()
+return
+
+y_PlaceVDWindow()
+{
+    y_DisableWindowBoarder()
+    WinMove, A, , 1921, 1080, 1080, 24
+}
+
+y_PlaceWindow()
+{
+    WinGetPos, Xpos, Ypos, Width, Height, A
+        If (Xpos = 1920 AND YPos = -658)
+        {
+            ;Top dock, moving to pinned middle dock
+                WinMove, A, , 1920, 0, 1080,1080
+                WinSet, AlwaysOnTop, On, A
+        }else if (XPos = 1920 AND YPos = 0)
+        {
+            ;Middle dock, release it to the center of main screen
+                WinMove, A, , 389, 215, 1077, 708
+                WinSet, AlwaysOnTop, On, A
+        }else{
+            ;Central focus or somewhere else, put it back to the dock area
+                WinMove, A, , 1920, -658, 1080, 658
+                WinSet, AlwaysOnTop, Off, A
+        }
     return
 }
-WinGetPos, Xpos, Ypos, Width, Height, A
-If (Xpos = 1920 AND YPos = -658)
-{
-    ;Top dock, moving to pinned middle dock
-    WinMove, A, , 1920, 0, 1080,1080
-    WinSet, AlwaysOnTop, On, A
-}else if (XPos = 1920 AND YPos = 0)
-{
-    ;Middle dock, release it to the center of main screen
-    WinMove, A, , 389, 215, 1077, 708
-    WinSet, AlwaysOnTop, On, A
-}else{
-    ;Central focus or somewhere else, put it back to the dock area
-    WinMove, A, , 1920, -658, 1080, 658
-    WinSet, AlwaysOnTop, Off, A
-}
-return
 
 y_ToggleWindowBoarder()
 {
