@@ -48,7 +48,7 @@ ShellMessageHandler( wParam, lParam )
             ExpandWorkstationRDPSession(lParam)
         }Else
         {
-            WinSet, AlwaysOnTop, On, A
+            ;WinSet, AlwaysOnTop, On, A
             If ( Title = "Virtual Dimension" )
                 y_PlaceVDWindow()
         }
@@ -101,6 +101,17 @@ else
     y_PlaceWindow()
 return
 
+^!d::
+y_ToggleAlwaysOnTop()
+return
+
+y_ToggleAlwaysOnTop()
+{
+    WinSet, AlwaysOnTop, Toggle, A
+    WinHide, A
+    WinShow, A
+}
+
 y_PlaceVDWindow()
 {
     y_DisableWindowBoarder()
@@ -114,12 +125,12 @@ y_PlaceWindow()
         {
             ;Top dock, moving to pinned middle dock
                 WinMove, A, , 1920, 0, 1080,1080
-                WinSet, AlwaysOnTop, On, A
+                ;WinSet, AlwaysOnTop, On, A
         }else if (XPos = 1920 AND YPos = 0)
         {
             ;Middle dock, release it to the center of main screen
                 WinMove, A, , 389, 215, 1077, 708
-                WinSet, AlwaysOnTop, On, A
+                ;WinSet, AlwaysOnTop, On, A
         }else{
             ;Central focus or somewhere else, put it back to the dock area
                 WinMove, A, , 1920, -658, 1080, 658
