@@ -43,9 +43,13 @@ ShellMessageHandler( wParam, lParam )
     If (wParam = 1) ;HSHELL_WINDOWCREATED       :=  1
     {
         WinGetTitle, Title, ahk_id %lParam%
-        If ( Title = "graph014 - Remote Desktop Connection" )
+        If (0 < RegExMatch( Title , "graph014.*Remote Desktop Connection") )
         {
             ExpandWorkstationRDPSession(lParam)
+        }Else If ( 0 < RegExMatch( Title , "v-yadli.*Remote Desktop Connection") )
+        {
+            ExpandWorkstationRDPSession(lParam)
+            ;WinMove, ahk_id %lParam%, , 1920, -706, 1080, 706
         }Else
         {
             ;WinSet, AlwaysOnTop, On, A
@@ -107,9 +111,10 @@ return
 
 y_ToggleAlwaysOnTop()
 {
+    WinExist("A")
     WinSet, AlwaysOnTop, Toggle, A
-    WinHide, A
-    WinShow, A
+    ;WinHide, A
+    ;WinShow, A
 }
 
 y_PlaceVDWindow()
@@ -121,10 +126,10 @@ y_PlaceVDWindow()
 y_PlaceWindow()
 {
     WinGetPos, Xpos, Ypos, Width, Height, A
-        If (Xpos = 1920 AND YPos = -658)
+        If (Xpos = 1920 AND YPos = -706 )
         {
             ;Top dock, moving to pinned middle dock
-                WinMove, A, , 1920, 0, 1080,1080
+                WinMove, A, , 1920, 0, 1080, 1030
                 ;WinSet, AlwaysOnTop, On, A
         }else if (XPos = 1920 AND YPos = 0)
         {
@@ -133,7 +138,7 @@ y_PlaceWindow()
                 ;WinSet, AlwaysOnTop, On, A
         }else{
             ;Central focus or somewhere else, put it back to the dock area
-                WinMove, A, , 1920, -658, 1080, 658
+                WinMove, A, , 1920, -706, 1080, 706
                 WinSet, AlwaysOnTop, Off, A
         }
     return
