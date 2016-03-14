@@ -70,7 +70,7 @@ ExpandWorkstationRDPSession( hwnd )
 IsWorkstationRDPSession()
 {
     WinGetTitle, Title, A
-    if(Title = "graph014 - Remote Desktop Connection")
+    if(0 < RegExMatch( Title , "graph014.*Remote Desktop Connection"))
         return true
     else
         return false
@@ -119,8 +119,10 @@ y_ToggleAlwaysOnTop()
 
 y_PlaceVDWindow()
 {
+;Manual setting & Window Spy inspection result:
+;left: 1919     top: 1032     width: 1082     height: 24
     y_DisableWindowBoarder()
-    WinMove, A, , 1921, 1080, 1080, 24
+    WinMove, A, , 1920, 1032, 1081, 24
 }
 
 y_PlaceWindow()
