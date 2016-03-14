@@ -50,11 +50,6 @@ ShellMessageHandler( wParam, lParam )
         {
             ExpandWorkstationRDPSession(lParam)
             ;WinMove, ahk_id %lParam%, , 1920, -706, 1080, 706
-        }Else
-        {
-            ;WinSet, AlwaysOnTop, On, A
-            If ( Title = "Virtual Dimension" )
-                y_PlaceVDWindow()
         }
     }
     return
@@ -99,8 +94,6 @@ return
 ^!f::
 if(IsWorkstationRDPSession())
     Send ^!f
-else if (IsVirtualDimension())
-    y_PlaceVDWindow()
 else
     y_PlaceWindow()
 return
@@ -113,36 +106,40 @@ y_ToggleAlwaysOnTop()
 {
     WinExist("A")
     WinSet, AlwaysOnTop, Toggle, A
+    WinGet, always_on_top_val, ExStyle, A
+    WinGetTitle, Title, A
+    if (always_on_top_val & 0x8) { ; 0x8 is WS_EX_TOPMOST. 
+        TrayTip, YadliShell, %Title% always on top ON, 1
+    }else {
+        TrayTip, YadliShell, %Title% always on top OFF, 1
+    }
     ;WinHide, A
     ;WinShow, A
-}
-
-y_PlaceVDWindow()
-{
-;Manual setting & Window Spy inspection result:
-;left: 1919     top: 1032     width: 1082     height: 24
-    y_DisableWindowBoarder()
-    WinMove, A, , 1920, 1032, 1081, 24
 }
 
 y_PlaceWindow()
 {
     WinGetPos, Xpos, Ypos, Width, Height, A
-        If (Xpos = 1920 AND YPos = -706 )
-        {
-            ;Top dock, moving to pinned middle dock
-                WinMove, A, , 1920, 0, 1080, 1030
-                ;WinSet, AlwaysOnTop, On, A
-        }else if (XPos = 1920 AND YPos = 0)
-        {
-            ;Middle dock, release it to the center of main screen
-                WinMove, A, , 389, 215, 1077, 708
-                ;WinSet, AlwaysOnTop, On, A
-        }else{
-            ;Central focus or somewhere else, put it back to the dock area
-                WinMove, A, , 1920, -706, 1080, 706
-                WinSet, AlwaysOnTop, Off, A
-        }
+    If (Xpos = 1913 AND YPos = -732 )
+    {
+        ;Top dock, moving to pinned middle dock
+        ;Preset for Win8: 
+        ;WinMove, A, , 1920, 0, 1080, 1030
+        ;Preset for Win10:
+        WinMove, A, , 1913, 0, 1093, 1102
+    }else if (XPos = 1913 AND YPos = 0)
+    {
+        ;Middle dock, release it to the center of main screen
+        WinMove, A, , 389, 215, 1077, 708
+        ;WinSet, AlwaysOnTop, On, A
+    }else{
+        ;Central focus or somewhere else, put it back to the dock area
+        ;Preset for Win8: 
+        ;WinMove, A, , 1920, -706, 1080, 706
+        ;Preset for Win10:
+        WinMove, A, , 1913, -732, 1093, 740
+        WinSet, AlwaysOnTop, Off, A
+    }
     return
 }
 
