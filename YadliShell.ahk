@@ -102,6 +102,43 @@ return
 y_ToggleAlwaysOnTop()
 return
 
+^!w::
+y_LookupWord()
+return
+
+y_LookupWord()
+{
+    SendInput, ^c
+    Sleep 200
+    SendInput, ^c
+    ClipWait
+    if !WinExist("ahk_exe ldoce5viewer.exe")
+    {
+        Run, "D:\Tools\LDOCE\LDOCE5 Viewer\ldoce5viewer.exe"    
+        Sleep 100
+    }
+
+    WinActivate,,LDOCE5 Viewer
+    WinGet, dict_win_minmax, MinMax,,LDOCE5 Viewer
+    if(%dict_win_minmax% < 0)
+    {
+        PostMessage, 0x112, 0xF120,,,,LDOCE5 Viewer  ; 0x112 = WM_SYSCOMMAND, 0xF120 = SC_RESTORE
+        WinRestore,A
+    }
+
+    ;Send, {ALT DOWN}{SHIFT DOWN}{TAB}{SHIFT UP}{ALT UP}
+
+    ;WinGetActiveTitle, Title
+        ;if Title = 
+        ;{
+            ;msgbox, "no active window"
+        ;}
+    ;TrayTip, %Title%
+    ;Sleep 100
+    ;SendInput, ^l
+    ;SendInput, ^v{Enter}
+}
+
 y_ToggleAlwaysOnTop()
 {
     WinExist("A")
@@ -164,3 +201,59 @@ y_DisableWindowBoarder()
     }
     return
 }
+
+;
+; mouse scrolling script from:
+; https://autohotkey.com/board/topic/56123-horizontal-scroll-wheelleftwheelright-in-windows-2003xp/
+;
+
++WheelUp::  ; Scroll left.
+    SetTitleMatchMode, 2
+    IfWinActive, Microsoft Excel -
+    {
+        ;SetScrollLockState, on
+        send,{left}
+        ;SetScrollLockState, off
+    }
+    else IfWinActive, Adobe Acrobat Professional -
+    {
+        send,+{left}
+    }
+    else IfWinActive, - Mozilla Firefox
+    {
+		Loop 4
+			send,{left}
+    }
+    else
+    {
+        ControlGetFocus, FocusedControl, A
+		Loop 4
+        SendMessage, 0x114, 0, 0, %FocusedControl%, A  ; 0x114 is WM_HSCROLL ; 1 vs. 0 causes SB_LINEDOWN vs. UP
+    }
+return
+
+
++WheelDown::  ; Scroll right.
+    SetTitleMatchMode, 2
+    IfWinActive, Microsoft Excel -
+    {
+        ;SetScrollLockState, on
+        send,{right}
+        ;SetScrollLockState, off
+    }
+    else IfWinActive, Adobe Acrobat Professional -
+    {
+        send,+{right}
+    }
+    else IfWinActive, - Mozilla Firefox
+    {
+		Loop 4
+			send,{right}
+    }
+    else
+    {
+        ControlGetFocus, FocusedControl, A
+		Loop 4
+			SendMessage, 0x114, 1, 0, %FocusedControl%, A  ; 0x114 is WM_HSCROLL ; 1 vs. 0 causes SB_LINEDOWN vs. UP
+    }
+return
