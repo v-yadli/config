@@ -169,8 +169,20 @@ y_PlaceWindow()
         ;Middle dock, release it to the center of main screen
         WinMove, A, , 389, 215, 1077, 708
         ;WinSet, AlwaysOnTop, On, A
-    }else{
-        ;Central focus or somewhere else, put it back to the dock area
+    }else if (XPos = 389 AND YPos = 215)
+    {
+        ;Central focus. Put it to left panel
+        ;win10 left panel 
+        ;left: -1287     top: 0     width: 1292     height: 1029
+        WinMove, A, , -1287, 0, 1292, 1029
+    }else if (XPos = -1287 AND YPos = 0)
+    {
+        ;Left panel. Put it to top panel.
+        ;win10 top panel left: 238     top: 1081     width: 1107     height: 624
+        WinMove, A, , 238, 1081, 1107, 624
+    }
+    else{
+        ;Top panel or somewhere else, put it back to the dock area
         ;Preset for Win8: 
         ;WinMove, A, , 1920, -706, 1080, 706
         ;Preset for Win10:
