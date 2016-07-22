@@ -17,8 +17,9 @@ choco install -y dia
 choco install -y emacs
 choco install -y gimp
 choco install -y inkscape
-choco install -y visualstudio2013ultimate
-choco install -y visualstudio2015enterprise
+choco install -y visualstudio2013ultimate --execution-timeout 300000
+choco install -y visualstudio2015enterprise --execution-timeout 300000
+choco install -y visualstudio2013-sdk
 choco install -y notepadplusplus
 choco install -y sysinternals
 choco install -y cmder
@@ -28,4 +29,9 @@ choco install -y nodejs
 choco install -y python2
 choco install -y curl
 choco install -y wget
+choco install -y windbg
+choco install -y f.lux
 REM choco install -y startkiller
+
+refreshenv
+npm install -g json
