@@ -40,6 +40,7 @@ choco install -y racket
 choco install -y sbcl
 choco install -y androidstudio
 REM choco install -y startkiller
+choco install -y windirstat
 
 refreshenv
 npm install -g json
