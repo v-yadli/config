@@ -41,6 +41,8 @@ choco install -y sbcl
 choco install -y androidstudio
 REM choco install -y startkiller
 choco install -y windirstat
+REM choco install -y wilma
+choco install -y slack
 
 refreshenv
 npm install -g json
