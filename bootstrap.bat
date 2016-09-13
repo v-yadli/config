@@ -2,6 +2,7 @@ REM run with elevated cmd
 @powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))" && SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin
 choco install -y Sudo
 choco install -y vim
+choco install -y owncloud-client
 choco install -y git
 choco install -y ag
 choco install -y 7zip
@@ -41,8 +42,13 @@ choco install -y sbcl
 choco install -y androidstudio
 REM choco install -y startkiller
 choco install -y windirstat
+choco install -y sqlite
 REM choco install -y wilma
-choco install -y slack
+REM choco install -y slack
+choco install -y reshack
+REM TODO packages maintained by v-yadli
+REM choco install -y cytoscape
+REM choco install -y wechat
 
 refreshenv
 npm install -g json
