@@ -3,6 +3,7 @@ REM run with elevated cmd
 choco install -y Sudo
 choco install -y vim
 choco install -y owncloud-client
+choco install -y mattermost-desktop
 choco install -y git
 choco install -y ag
 choco install -y 7zip
