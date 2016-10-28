@@ -35,6 +35,7 @@ choco install -y python2
 choco install -y curl
 choco install -y wget
 choco install -y windbg
+choco install -y ilspy
 choco install -y f.lux
 choco install -y jdk8
 choco install -y linqpad
@@ -47,9 +48,11 @@ choco install -y sqlite
 REM choco install -y wilma
 REM choco install -y slack
 choco install -y reshack
+choco install -y VisualStudioCode
 REM TODO packages maintained by v-yadli
-REM choco install -y cytoscape
-REM choco install -y wechat
+choco install -y cytoscape
+choco install -y wechat
+choco install -y netease-cloudmusic
 
 refreshenv
 npm install -g json
