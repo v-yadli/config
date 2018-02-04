@@ -21,11 +21,15 @@ y_ToggleWindowBoarder()
 {
     SetTitleMatchMode, 2
     WinGet Style, Style, A
+    WinGetPos, Xpos, Ypos, Width, Height, A
     if(Style & 0xC40000) {
         WinSet, Style, -0xC40000, A
+        XOffset = 20
     } else {
         WinSet, Style, +0xC40000, A
+        XOffset = -18
     }
+    WinMove, A, , Xpos + XOffset, Ypos, Width, Height
     return
 }
 
