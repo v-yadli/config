@@ -56,8 +56,9 @@ Set-Item -Path function:\prompt  -Value $Prompt  # -Options ReadOnly
 Import-Module ZLocation
 Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
 Set-PSReadlineKeyHandler -Key Ctrl+w -Function BackwardKillWord
-Set-PSReadlineKeyHandler -Key Alt+w -Function NextWord
+Set-PSReadlineKeyHandler -Key Alt+f -Function NextWord
 Set-PSReadlineKeyHandler -Key Alt+b -Function BackwardWord
 Set-PSReadlineKeyHandler -Key Ctrl+a -Function BeginningOfLine
 Set-PSReadlineKeyHandler -Key Ctrl+e -Function EndOfLine
-
+Set-PSReadlineKeyHandler -Key Ctrl+n -Function NextHistory
+Set-PSReadlineKeyHandler -Key Ctrl+p -Function PreviousHistory
