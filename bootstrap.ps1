@@ -13,6 +13,7 @@ choco install -y curl
 choco install -y dia
 choco install -y everything
 choco install -y foobar2000
+choco install -y fzf
 choco install -y gimp
 choco install -y git
 choco install -y ilspy
@@ -40,5 +41,5 @@ Import-Module $PSScriptRoot\Select-ColorScheme.psm1
 # 125
 # colortool -b '$PSScriptRoot\iTerm2-Color-Schemes\schemes\purplepeter.itermcolors'
 # 161
-colortool -b '$PSScriptRoot\iTerm2-Color-Schemes\schemes\Monokai Remastered.itermcolors'
+colortool -b '$PSScriptRoot\iTerm2-Color-Schemes\schemes\OneHalfDark.itermcolors'
 

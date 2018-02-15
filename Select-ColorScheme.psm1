@@ -2,16 +2,16 @@ Function Select-ColorScheme($idx = 0)
 {
     $schemes = Get-ChildItem -Path 'iTerm2-Color-Schemes\schemes\'
     Clear-Host
-    Write-Output "====== Code display:"
-    pygmentize.exe 'Select-ColorScheme.psm1'
-    Write-Output "====== Error display:"
-    Invoke-Command -ScriptBlock { Undefined-Command }
-    $code = Get-ConsoleBuffer
+    #Write-Output "====== Code display:"
+    #pygmentize.exe 'Select-ColorScheme.psm1'
+    #Write-Output "====== Error display:"
+    #Invoke-Command -ScriptBlock { Undefined-Command }
+    #$code = Get-ConsoleBuffer
     For (; ;) {
         $cscheme = $schemes[$idx]
-        colortool $schemes[$idx].FullName
         Clear-Host
-        Set-ConsoleBuffer $code
+        colortool $schemes[$idx].FullName
+#Set-ConsoleBuffer $code
         Write-Output "====== Current scheme: $cscheme[$idx]"
         $key = [System.Console]::ReadKey().Key
         if ($key -eq [System.ConsoleKey]::LeftArrow) { $idx = $idx - 1}

@@ -61,3 +61,4 @@ Set-PSReadlineKeyHandler -Key Alt+b -Function BackwardWord
 Set-PSReadlineKeyHandler -Key Ctrl+a -Function BeginningOfLine
 Set-PSReadlineKeyHandler -Key Ctrl+e -Function EndOfLine
 
+New-Alias ssh 'C:\Program Files\Git\usr\bin\ssh.exe'
