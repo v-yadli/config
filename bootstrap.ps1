@@ -40,9 +40,4 @@ Install-Module ZLocation -AllowClobber
 Install-Module Watch-PerfCounter
 Install-Module Posh-SSH
 Import-Module $PSScriptRoot\Select-ColorScheme.psm1
-# 125
-# colortool -b '$PSScriptRoot\iTerm2-Color-Schemes\schemes\purplepeter.itermcolors'
-# 161
-#colortool -b '$PSScriptRoot\iTerm2-Color-Schemes\schemes\Monokai Remastered.itermcolors'
-#colortool -b '$PSScriptRoot\Mintty.ini'
-colortool -b '$PSScriptRoot\iTerm2-Color-Schemes\schemes\Glacier.itermcolors'
+colortool -b '$PSScriptRoot\iTerm2-Color-Schemes\schemes\OneHalfDark.itermcolors'
