@@ -9,7 +9,7 @@ Function Select-ColorScheme($idx = 0)
     $code = Get-ConsoleBuffer
     For (; ;) {
         $cscheme = $schemes[$idx]
-        colortool $schemes[$idx].FullName
+        colortool -q -b $schemes[$idx].FullName
         Clear-Host
         Set-ConsoleBuffer $code
         Write-Output "====== Current scheme: $cscheme[$idx]"
