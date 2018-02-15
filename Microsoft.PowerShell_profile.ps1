@@ -54,6 +54,7 @@ Custom prompt functions are loaded in as constants to get the same behaviour
 Set-Item -Path function:\prompt  -Value $Prompt  # -Options ReadOnly
 
 Import-Module ZLocation
+
 Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
 Set-PSReadlineKeyHandler -Key Ctrl+w -Function BackwardKillWord
 Set-PSReadlineKeyHandler -Key Alt+w -Function NextWord
