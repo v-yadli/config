@@ -1,0 +1,42 @@
+set ignorecase
+set smartcase
+" Line number
+set number
+" Highlight search & incremental search
+set hlsearch
+set incsearch
+" Bind ESC in normal mode to clear highlight search
+autocmd VimEnter * nnoremap <Esc> :nohlsearch<CR>
+" Necessity Evil Reloaded
+set clipboard=unnamedplus
+vmap <C-V> gp
+set cursorline
+
+" Tab operations and buffer operations{{{
+nmap <A-w> :vsc File.Close<CR>
+nmap <A-n> :<C-Tab>
+nmap <A-p> :<C-S-Tab>
+nmap <A-b> :<C-Tab>
+nmap <A-f> :<C-S-Tab>
+nmap <A-a> ggVG
+"}}}
+
+" Use tab to indent
+vmap <tab> >gv
+vmap <s-tab> <gv
+
+"*****************************************************************************
+"" Abbreviations
+"*****************************************************************************
+"" no one is really happy until you have this shortcuts
+cnoreabbrev W! w!
+cnoreabbrev Q! q!
+cnoreabbrev Qall! qall!
+cnoreabbrev Wq wq
+cnoreabbrev Wa wa
+cnoreabbrev wQ wq
+cnoreabbrev WQ wq
+cnoreabbrev W w
+cnoreabbrev Q q
+cnoreabbrev Qall qall
+
