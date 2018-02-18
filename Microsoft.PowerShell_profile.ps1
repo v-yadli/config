@@ -64,3 +64,4 @@ Set-PSReadlineKeyHandler -Key Ctrl+e -Function EndOfLine
 Set-PSReadlineKeyHandler -Key Ctrl+n -Function NextHistory
 Set-PSReadlineKeyHandler -Key Ctrl+p -Function PreviousHistory
 New-Alias ssh 'C:\Program Files\Git\usr\bin\ssh.exe'
+New-Alias scp 'C:\Program Files\Git\usr\bin\scp.exe'
