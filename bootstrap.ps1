@@ -14,7 +14,7 @@ function Bootstrap() {
 	choco install -y dia
 	choco install -y everything
 	choco install -y foobar2000
-    choco install -y fzf
+	choco install -y fzf
 	choco install -y gimp
 	choco install -y git
 	choco install -y ilspy
@@ -24,6 +24,7 @@ function Bootstrap() {
 	choco install -y neovim
 	choco install -y nextcloud-client
 	choco install -y nuget.commandline
+	choco install -y openssh
 	choco install -y racket
 	choco install -y sharpkeys
 	choco install -y sqlite
@@ -39,7 +40,8 @@ Copy-Item -Path '$PSScriptRoot\Microsoft.PowerShell_profile.ps1' -Destination $P
 Copy-Item -Path '$PSScriptRoot\_vsvimrc' -Destination '$env:USERPROFILE\_vsvimrc'
 Install-Module posh-git -AllowClobber
 Install-Module ZLocation -AllowClobber
-Install-Module Watch-PerfCounter
-Install-Module Posh-SSH
+# Install-Module Watch-PerfCounter
+# Install-Module Posh-SSH
+Install-Module InvokeBuild
 Import-Module $PSScriptRoot\Select-ColorScheme.psm1
 colortool -b '$PSScriptRoot\iTerm2-Color-Schemes\schemes\OneHalfDark.itermcolors'

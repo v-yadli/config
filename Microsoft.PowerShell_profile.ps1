@@ -54,6 +54,7 @@ Custom prompt functions are loaded in as constants to get the same behaviour
 Set-Item -Path function:\prompt  -Value $Prompt  # -Options ReadOnly
 
 Import-Module ZLocation
+Import-Module InvokeBuild
 
 Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
 Set-PSReadlineKeyHandler -Key Ctrl+w -Function BackwardKillWord
@@ -63,5 +64,3 @@ Set-PSReadlineKeyHandler -Key Ctrl+a -Function BeginningOfLine
 Set-PSReadlineKeyHandler -Key Ctrl+e -Function EndOfLine
 Set-PSReadlineKeyHandler -Key Ctrl+n -Function NextHistory
 Set-PSReadlineKeyHandler -Key Ctrl+p -Function PreviousHistory
-New-Alias ssh 'C:\Program Files\Git\usr\bin\ssh.exe'
-New-Alias scp 'C:\Program Files\Git\usr\bin\scp.exe'
