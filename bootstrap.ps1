@@ -45,3 +45,13 @@ Install-Module ZLocation -AllowClobber
 Install-Module InvokeBuild
 Import-Module $PSScriptRoot\Select-ColorScheme.psm1
 colortool -b '$PSScriptRoot\iTerm2-Color-Schemes\schemes\OneHalfDark.itermcolors'
+
+# Development environment setup
+refreshenv
+
+pip install neovim jedi mistune psutil setproctitle
+pip install python-language-server
+# TODO hs env, lang server hie
+# TODO ps1 env
+# TODO cs env
+#
