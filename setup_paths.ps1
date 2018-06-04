@@ -2,7 +2,7 @@ $env = Get-ItemProperty -Path HKCU:\Environment
 $p = $env.Path
 
 $newPaths = (
-        "C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin",
+        #"C:\Program Files\CMake\bin",
         "C:\tools\neovim\Neovim\bin",
         "C:\tools\Anaconda3\Scripts",
         "C:\tools\Anaconda3"
