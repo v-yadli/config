@@ -55,6 +55,7 @@ Set-Item -Path function:\prompt  -Value $Prompt  # -Options ReadOnly
 
 Import-Module ZLocation
 Import-Module InvokeBuild
+Import-Module Pscx
 
 Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
 Set-PSReadlineKeyHandler -Key Ctrl+w -Function BackwardKillWord
