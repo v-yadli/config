@@ -5,3 +5,4 @@ Install-Module ZLocation -AllowClobber
 # Install-Module Watch-PerfCounter
 # Install-Module Posh-SSH
 Install-Module InvokeBuild
+Install-Module PSCX -AllowClobber
