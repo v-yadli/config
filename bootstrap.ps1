@@ -6,8 +6,8 @@
 # Development environment setup
 refreshenv
 
-pip install neovim jedi mistune psutil setproctitle
-pip install python-language-server
+. ./setup_python.ps1
+
 # TODO hs env, lang server hie
 # TODO ps1 env
 # TODO cs env

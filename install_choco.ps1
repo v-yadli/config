@@ -18,6 +18,7 @@ choco install -y gimp
 choco install -y git
 choco install -y ilspy
 choco install -y inkscape
+choco install -y licecap
 choco install -y linqpad
 choco install -y microsoft-teams
 choco install -y neovim
