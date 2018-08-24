@@ -48,9 +48,10 @@ EOF
 pip2 install neovim
 sudo -u $THIS_USER $HOME/anaconda3/bin/pip install neovim
 sudo -u $THIS_USER git clone https://github.com/v-yadli/vimrc -b nvim $HOME/.config/nvim
-sudo -u $THIS_USER source $HOME/.bashrc && nvim +PlugInstall +qall
+sudo -u $THIS_USER nvim +PlugInstall +qall
 cd $HOME/git/config 
-sudo -u $THIS_USER && git submodule init && git submodule update --recursive
+sudo -u $THIS_USER git submodule init 
+sudo -u $THIS_USER git submodule update --recursive
 cd $HOME
 sudo -u $THIS_USER ln -s $HOME/git/config/tmux/.tmux.conf ./
 sudo -u $THIS_USER ln -s $HOME/git/config/tmux/.tmux ./
