@@ -27,6 +27,11 @@ echo "Configure various ppa..."
 apt-add-repository -y ppa:neovim-ppa/unstable
 add-apt-repository -y ppa:timsc/swig-3.0.12
 add-apt-repository -y ppa:ubuntu-toolchain-r/test
+add-apt-repository -y ppa:git-core/ppa
+
+echo "Configure git-lfs..."
+
+curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash
 
 echo "Install apt packages..."
 
@@ -37,6 +42,8 @@ apt install -y neovim
 apt install -y unzip
 apt install -y llvm-6.0-doc llvm-6.0-examples llvm-6.0-tools llvm-6.0-runtime llvm-6.0 llvm-6.0-dev libclang-6.0-dev clang-6.0 clang-tools-6.0 clang-6.0-doc clang-6.0-examples
 apt install -y python-pip
+apt install -y git-lfs
+apt install -y default-jre
 
 echo "Configuring user profile..."
 

@@ -16,6 +16,7 @@ choco install -y foobar2000
 choco install -y fzf
 choco install -y gimp
 choco install -y git
+choco install -y git-lfs
 choco install -y git-status-cache-posh-client
 choco install -y ilspy
 choco install -y inkscape
