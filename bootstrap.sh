@@ -28,6 +28,8 @@ apt-add-repository -y ppa:neovim-ppa/unstable
 add-apt-repository -y ppa:timsc/swig-3.0.12
 add-apt-repository -y ppa:ubuntu-toolchain-r/test
 add-apt-repository -y ppa:git-core/ppa
+add-apt-repository -y ppa:aacebedo/fasd
+
 
 echo "Configure git-lfs..."
 
@@ -44,13 +46,20 @@ apt install -y llvm-6.0-doc llvm-6.0-examples llvm-6.0-tools llvm-6.0-runtime ll
 apt install -y python-pip
 apt install -y git-lfs
 apt install -y default-jre
+apt install -y fasd
 
 echo "Configuring user profile..."
+
+sudo -u $THIS_USER git clone --depth=1 https://github.com/Bash-it/bash-it.git $HOME/.bash_it
+sudo -u $THIS_USER $HOME/.bash_it/install.sh --silent
 
 cat >> $HOME/.bashrc <<EOF
 PATH=\$HOME/anaconda3/bin:\$PATH
 alias vim=nvim
+alias ls='ls --color=auto -v -lh'
 EOF
+
+sudo -u $THIS_USER "source $HOME/.bashrc; bash-it enable plugin powerline tmux less-pretty-cat fzf fasd"
 
 pip2 install neovim
 sudo -u $THIS_USER $HOME/anaconda3/bin/pip install neovim
