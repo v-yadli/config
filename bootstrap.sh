@@ -57,12 +57,15 @@ cat >> $HOME/.bashrc <<EOF
 PATH=\$HOME/anaconda3/bin:\$PATH
 alias vim=nvim
 alias ls='ls --color=auto -v -lh'
+export THEME_SHOW_CLOCK_CHAR=false
 EOF
 
-sudo -u $THIS_USER "source $HOME/.bashrc; bash-it enable plugin powerline tmux less-pretty-cat fzf fasd"
+sudo -u $THIS_USER "source $HOME/.bashrc; bash-it enable plugin powerline tmux less-pretty-cat fzf fasd; bash-it enable completion tmux ssh git pip conda
+"
 
 pip2 install neovim
 sudo -u $THIS_USER $HOME/anaconda3/bin/pip install neovim
+sudo -u $THIS_USER $HOME/anaconda3/bin/pip install argcomplete
 sudo -u $THIS_USER git clone https://github.com/v-yadli/vimrc -b nvim $HOME/.config/nvim
 sudo -u $THIS_USER nvim +PlugInstall +qall
 cd $HOME/git/config 
