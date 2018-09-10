@@ -20,6 +20,7 @@ choco install -y git-lfs
 choco install -y git-status-cache-posh-client
 choco install -y ilspy
 choco install -y inkscape
+choco install -y kdiff3
 choco install -y licecap
 choco install -y linqpad
 choco install -y microsoft-teams
