@@ -29,7 +29,8 @@ add-apt-repository -y ppa:timsc/swig-3.0.12
 add-apt-repository -y ppa:ubuntu-toolchain-r/test
 add-apt-repository -y ppa:git-core/ppa
 add-apt-repository -y ppa:aacebedo/fasd
-
+add-apt-repository -y ppa:greymd/tmux-xpanes
+add-apt-repository -y ppa:sig-lange/tmux
 
 echo "Configure git-lfs..."
 
@@ -47,6 +48,7 @@ apt install -y python-pip
 apt install -y git-lfs
 apt install -y default-jre
 apt install -y fasd
+apt install -y tmux tmux-xpanes
 
 echo "Configuring user profile..."
 
