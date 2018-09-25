@@ -54,7 +54,6 @@ Custom prompt functions are loaded in as constants to get the same behaviour
 Set-Item -Path function:\prompt  -Value $Prompt  # -Options ReadOnly
 
 Import-Module ZLocation
-Import-Module InvokeBuild
 Import-Module Pscx
 Import-Module 'C:\ProgramData\chocolatey\lib\git-status-cache-posh-client\tools\git-status-cache-posh-client-1.0.0\GitStatusCachePoshClient.psm1'
 
