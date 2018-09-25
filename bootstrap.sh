@@ -64,7 +64,7 @@ sudo -u $THIS_USER "source $HOME/.bashrc; bash-it enable plugin powerline tmux l
 "
 
 pip2 install neovim
-sudo -u $THIS_USER $HOME/anaconda3/bin/pip install neovim
+sudo -u $THIS_USER $HOME/anaconda3/bin/pip install neovim neovim-remote
 sudo -u $THIS_USER $HOME/anaconda3/bin/pip install python-language-server
 sudo -u $THIS_USER $HOME/anaconda3/bin/pip install argcomplete
 sudo -u $THIS_USER git clone https://github.com/v-yadli/vimrc -b nvim $HOME/.config/nvim

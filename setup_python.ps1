@@ -1,2 +1,2 @@
-pip install neovim jedi mistune psutil setproctitle
-pip install pyls Redy rbnf
+pip install neovim mistune psutil setproctitle
+pip install python-language-server neovim-remote Redy rbnf
