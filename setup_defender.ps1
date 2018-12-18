@@ -1,0 +1,21 @@
+Set-MpPreference `
+    -DisableArchiveScanning $false `
+    -DisableAutoExclusions $false `
+    -DisableBehaviorMonitoring $true `
+    -DisableBlockAtFirstSeen $true `
+    -DisableCatchupFullScan $true `
+    -DisableCatchupQuickScan $true `
+    -DisableEmailScanning $true `
+    -DisableIntrusionPreventionSystem $false `
+    -DisableIOAVProtection $false `
+    -DisablePrivacyMode $false `
+    -DisableRealtimeMonitoring $true `
+    -DisableRemovableDriveScanning $false `
+    -DisableRestorePoint $true `
+    -DisableScanningMappedNetworkDrivesForFullScan $true `
+    -DisableScanningNetworkFiles $false `
+    -DisableScriptScanning $true `
+    -EnableLowCpuPriority $true `
+    -RemediationScheduleDay 8 `
+    -ScanScheduleDay 8 `
+    -ScanParameters QuickScan
