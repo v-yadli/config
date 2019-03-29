@@ -55,6 +55,7 @@ Set-Item -Path function:\prompt  -Value $Prompt  # -Options ReadOnly
 
 Import-Module ZLocation
 Import-Module Pscx
+Import-Module MonitorFactory
 Import-Module 'C:\ProgramData\chocolatey\lib\git-status-cache-posh-client\tools\git-status-cache-posh-client-1.0.0\GitStatusCachePoshClient.psm1'
 
 Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
