@@ -1,4 +1,4 @@
-Set-ExecutionPolocy -ExecutionPolicy Bypass -Scope Process -Force
+Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process -Force
 Invoke-Expression ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))
 choco install -y 7zip
 choco install -y ag
