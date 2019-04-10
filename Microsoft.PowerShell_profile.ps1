@@ -1,6 +1,6 @@
 ﻿new-alias -name "vim" -value nvim
 new-alias -name "vi" -value nvim
-new-alias -name "gvim" -value nvim-qt
+new-alias -name "gvim" -value "C:\Tools\neovimgtk\bin\nvim-gtk.exe"
 
 $gitLoaded = $false
 function Import-Git($Loaded){
