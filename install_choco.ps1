@@ -29,6 +29,7 @@ choco install -y neovim
 choco install -y nextcloud-client
 choco install -y nuget.commandline
 choco install -y openssh
+choco install -y potplayer
 choco install -y sharpkeys
 choco install -y sqlite
 choco install -y StrawberryPerl
@@ -38,5 +39,6 @@ choco install -y sysinternals
 choco install -y visualstudiocode
 choco install -y wget
 choco install -y windirstat
+choco install -y xnviewmp
 choco install -y yarn
 choco install -y zeal
