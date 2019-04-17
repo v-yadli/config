@@ -1,11 +1,11 @@
 Copy-Item -Path "$PSScriptRoot\Microsoft.PowerShell_profile.ps1" -Destination $PROFILE
 Copy-Item -Path "$PSScriptRoot\_vsvimrc" -Destination "$env:USERPROFILE\_vsvimrc"
 Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
-Install-Module posh-git -AllowClobber -Force
-Install-Module ZLocation -AllowClobber -Force
-Install-Module MonitorFactory -Force
-# Install-Module Watch-PerfCounter
-# Install-Module Posh-SSH
-Install-Module InvokeBuild -Force
-Install-Module Pscx -AllowClobber -Force
-
+Install-Module posh-git -AllowClobber -Scope CurrentUser -Force
+Install-Module ZLocation -AllowClobber -Scope CurrentUser -Force
+Install-Module MonitorFactory -Scope CurrentUser -Force
+# Install-Module Watch-PerfCounte -Scope CurrentUser
+# Install-Module Posh-SS -Scope CurrentUser
+Install-Module InvokeBuild -Scope CurrentUser -Force
+Install-Module Pscx -AllowClobber -Scope CurrentUser -Force
+Install-Module PSReadLine -AllowClobber -Scope CurrentUser -Force
