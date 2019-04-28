@@ -40,5 +40,6 @@ choco install -y sysinternals
 choco install -y visualstudiocode
 choco install -y wget
 choco install -y windirstat
+choco install -y wsltty
 choco install -y yarn
 choco install -y zeal
