@@ -7,11 +7,10 @@ $gitLoaded = $false
 function Import-Git($Loaded){
     if($Loaded) { return }
     $GitModule = Get-Module -Name Posh-Git -ListAvailable
-    if($GitModule | select version | where version -le ([version]"0.6.1.20160330")){
+    if($GitModule){
         Import-Module Posh-Git > $null
-    }
-    if(-not ($GitModule) ) {
-        Write-Warning "Missing git support, install posh-git with 'Install-Module posh-git' and restart cmder."
+    } else {
+        Write-Warning "Missing git support, install posh-git with 'Install-Module posh-git'."
     }
     # Make sure we only run once by alawys returning true
     return $true
@@ -31,6 +30,31 @@ function checkGit($Path) {
 
 if (Get-Module PSReadline -ErrorAction "SilentlyContinue") {
     Set-PSReadlineOption -ExtraPromptLineCount 1
+}
+
+function clone([string] $repo)
+{
+# a short repo notation
+    if(-not $repo.Contains("git@") -and -not $repo.Contains("https"))
+    {
+        $user,$repo = $repo.Split('/')
+        switch($user)
+        {
+            "yatli" {
+                $repo = "git@github.com:$user/$repo"
+            }
+            "v-yadli" {
+                $repo = "git@github.com:$user/$repo"
+            }
+            "researchpaper" {
+                $repo = "git@gitlab.com:$user/$repo"
+            }
+            default {
+                $repo = "https://github.com/$user/$repo"
+            }
+        }
+    }
+    git clone --recursive $repo
 }
 
 <#
