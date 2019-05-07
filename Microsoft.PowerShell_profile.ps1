@@ -1,6 +1,7 @@
 ﻿new-alias -name "vim" -value nvim
 new-alias -name "vi" -value nvim
 new-alias -name "gvim" -value "C:\Tools\neovimgtk\bin\nvim-gtk.exe"
+new-alias -name "Expand-Archive" -value Microsoft.PowerShell.Archive\Expand-Archive
 
 $gitLoaded = $false
 function Import-Git($Loaded){
