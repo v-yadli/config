@@ -1,6 +1,6 @@
 ﻿new-alias -name "vim" -value nvim
 new-alias -name "vi" -value nvim
-new-alias -name "gvim" -value "C:\Tools\neovimgtk\bin\nvim-gtk.exe"
+new-alias -name "gvim" -value "C:\Tools\fvim\fvim.exe"
 new-alias -name "Expand-Archive" -value Microsoft.PowerShell.Archive\Expand-Archive
 
 $gitLoaded = $false
@@ -91,3 +91,26 @@ Set-PSReadlineKeyHandler -Key Ctrl+a -Function BeginningOfLine
 Set-PSReadlineKeyHandler -Key Ctrl+e -Function EndOfLine
 Set-PSReadlineKeyHandler -Key Ctrl+n -Function NextHistory
 Set-PSReadlineKeyHandler -Key Ctrl+p -Function PreviousHistory
+
+$timestamp_file = "$PSScriptRoot\repo_update.txt" 
+$update_timestamp = Get-Item $timestamp_file -ErrorAction SilentlyContinue
+if ($update_timestamp) { $update_timestamp = [System.DateTime]::Parse((Get-Content $update_timestamp)) }
+else                   { $update_timestamp = [System.DateTime]::MinValue }
+
+$now = [System.DateTime]::Now
+if ($now - $update_timestamp -gt [System.TimeSpan]::FromDays(1)) {
+    Set-Content $timestamp_file -Value $now
+    $myrepos = "GraphMachine","fvim","coc-fsharp","config","nvim","coc-powershell"
+    $myrepos | ForEach-Object {
+        Write-Host -ForegroundColor Green "Updating repository $_"
+        $job = Start-Job {
+            Push-Location
+            z $args[0] -WarningAction Stop
+            git pull
+            Pop-Location
+        } -ArgumentList $_
+        return $job
+    } | Wait-Job | Receive-Job
+    Get-Job | Stop-Job
+}
+
