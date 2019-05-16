@@ -29,6 +29,8 @@ choco install -y neovim
 choco install -y nextcloud-client
 choco install -y nuget.commandline
 choco install -y openssh
+choco install -y Paket
+choco install -y Paket.PowerShell
 choco install -y potplayer
 choco install -y sharpkeys
 choco install -y simulide
