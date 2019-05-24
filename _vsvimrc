@@ -40,3 +40,4 @@ cnoreabbrev W w
 cnoreabbrev Q q
 cnoreabbrev Qall qall
 
+nmap <S-k> :vsc Edit.QuickInfo<CR>
