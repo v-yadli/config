@@ -57,6 +57,22 @@ function clone([string] $repo)
     git clone --recursive $repo
 }
 
+function Update-Neovim()
+{
+    $tmpfile = "$(New-TemporaryFile).zip"
+    Write-Host "Downloading latest neovim..."
+    Invoke-WebRequest -Uri https://github.com/neovim/neovim/releases/download/nightly/nvim-win64.zip -OutFile $tmpfile
+    Write-Host "Removing old installation..."
+    Stop-Process -Name FVim -ErrorAction SilentlyContinue
+    Stop-Process -Name nvim -ErrorAction SilentlyContinue
+    Remove-Item -Recurse -Force -Path C:\tools\neovim\Neovim
+    Write-Host "Installing..."
+    Microsoft.PowerShell.Archive\Expand-Archive -Path $tmpfile -DestinationPath C:\tools\neovim
+    Write-Host "Cleanup..."
+    Remove-Item $tmpfile
+    Write-Host "Done!"
+}
+
 <#
 This scriptblock runs every time the prompt is returned.
 Explicitly use functions from MS namespace to protect from being overridden in the user session.
@@ -100,7 +116,7 @@ else                   { $update_timestamp = [System.DateTime]::MinValue }
 $now = [System.DateTime]::Now
 if ($now - $update_timestamp -gt [System.TimeSpan]::FromDays(1)) {
     Set-Content $timestamp_file -Value $now
-    $myrepos = "GraphMachine","fvim","coc-fsharp","config","nvim","coc-powershell"
+    $myrepos = "GraphMachine","fvim","coc-fsharp","config","nvim","coc-powershell", "visualfsharp"
     $myrepos | ForEach-Object {
         Write-Host -ForegroundColor Green "Updating repository $_"
         $job = Start-Job {
@@ -114,3 +130,7 @@ if ($now - $update_timestamp -gt [System.TimeSpan]::FromDays(1)) {
     Get-Job | Stop-Job
 }
 
+$VcpkgModpath = '~\git\vcpkg\scripts\posh-vcpkg'
+if (Get-Item $VcpkgModpath) {
+    Import-Module $VcpkgModpath
+}
