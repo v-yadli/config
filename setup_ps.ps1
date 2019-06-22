@@ -12,3 +12,4 @@ Install-Module MonitorFactory -Scope CurrentUser -Force
 Install-Module InvokeBuild -Scope CurrentUser -Force
 Install-Module Pscx -AllowClobber -Scope CurrentUser -Force
 Install-Module PSReadLine -AllowClobber -Scope CurrentUser -Force -AllowPrerelease
+Install-Module Get-ChildItemColor -Scope CurrentUser 

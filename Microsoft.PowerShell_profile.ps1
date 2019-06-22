@@ -1,9 +1,4 @@
-﻿new-alias -name "vim" -value nvim
-new-alias -name "vi" -value nvim
-new-alias -name "gvim" -value "C:\Tools\fvim\fvim.exe"
-new-alias -name "Expand-Archive" -value Microsoft.PowerShell.Archive\Expand-Archive
-
-$gitLoaded = $false
+﻿$gitLoaded = $false
 function Import-Git($Loaded){
     if($Loaded) { return }
     $GitModule = Get-Module -Name Posh-Git -ListAvailable
@@ -97,6 +92,7 @@ Set-Item -Path function:\prompt  -Value $Prompt  # -Options ReadOnly
 Import-Module ZLocation
 Import-Module Pscx
 Import-Module MonitorFactory
+Import-Module Get-ChildItemColor
 # Import-Module 'C:\ProgramData\chocolatey\lib\git-status-cache-posh-client\tools\git-status-cache-posh-client-1.0.0\GitStatusCachePoshClient.psm1'
 
 Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
@@ -116,7 +112,7 @@ else                   { $update_timestamp = [System.DateTime]::MinValue }
 $now = [System.DateTime]::Now
 if ($now - $update_timestamp -gt [System.TimeSpan]::FromDays(1)) {
     Set-Content $timestamp_file -Value $now
-    $myrepos = "GraphMachine","fvim","coc-fsharp","config","nvim","coc-powershell", "visualfsharp"
+    $myrepos = "GraphMachine","fvim","coc-fsharp","config","nvim","coc-powershell"
     $myrepos | ForEach-Object {
         Write-Host -ForegroundColor Green "Updating repository $_"
         $job = Start-Job {
@@ -130,7 +126,21 @@ if ($now - $update_timestamp -gt [System.TimeSpan]::FromDays(1)) {
     Get-Job | Stop-Job
 }
 
+
+# Chocolatey profile
+$ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
+if (Test-Path($ChocolateyProfile)) {
+  Import-Module "$ChocolateyProfile"
+}
+
 $VcpkgModpath = '~\git\vcpkg\scripts\posh-vcpkg'
 if (Get-Item $VcpkgModpath) {
     Import-Module $VcpkgModpath
 }
+
+New-Alias -Name vim -Value nvim
+New-Alias -Name vi -Value nvim
+New-Alias -Name gvim -Value "C:\Tools\fvim\fvim.exe"
+Set-Alias -Name Expand-Archive -Value Microsoft.PowerShell.Archive\Expand-Archive
+Set-Alias -Name ls -Value Get-ChildItemColor -Option AllScope
+
