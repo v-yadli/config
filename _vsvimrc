@@ -12,32 +12,11 @@ set clipboard=unnamedplus
 vmap <C-V> gp
 set cursorline
 
-" Tab operations and buffer operations{{{
-nmap <A-w> :vsc File.Close<CR>
-nmap <A-n> :<C-Tab>
-nmap <A-p> :<C-S-Tab>
-nmap <A-b> :<C-Tab>
-nmap <A-f> :<C-S-Tab>
-nmap <A-a> ggVG
-"}}}
-
 " Use tab to indent
 vmap <tab> >gv
 vmap <s-tab> <gv
 
-"*****************************************************************************
-"" Abbreviations
-"*****************************************************************************
-"" no one is really happy until you have this shortcuts
-cnoreabbrev W! w!
-cnoreabbrev Q! q!
-cnoreabbrev Qall! qall!
-cnoreabbrev Wq wq
-cnoreabbrev Wa wa
-cnoreabbrev wQ wq
-cnoreabbrev WQ wq
-cnoreabbrev W w
-cnoreabbrev Q q
-cnoreabbrev Qall qall
+nmap <Space> za
 
 nmap <S-k> :vsc Edit.QuickInfo<CR>
+nmap gi :vsc Edit.GotoImplementation<CR>
