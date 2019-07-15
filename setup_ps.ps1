@@ -1,7 +1,7 @@
 Copy-Item -Path "$PSScriptRoot\Microsoft.PowerShell_profile.ps1" -Destination $PROFILE
 Copy-Item -Path "$PSScriptRoot\_vsvimrc" -Destination "$env:USERPROFILE\_vsvimrc"
 Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
-Install-Module PowerShellGet -Scope CurrentUser -Force
+Update-Module PowerShellGet -Scope CurrentUser -Force
 Remove-Module PowerShellGet
 Import-Module PowerShellGet
 Install-Module posh-git -AllowClobber -Scope CurrentUser -Force

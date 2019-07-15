@@ -134,8 +134,10 @@ if (Test-Path($ChocolateyProfile)) {
 }
 
 $VcpkgModpath = '~\git\vcpkg\scripts\posh-vcpkg'
-if (Get-Item $VcpkgModpath) {
+if (Get-Item $VcpkgModpath -ErrorAction SilentlyContinue) {
     Import-Module $VcpkgModpath
+}else{
+    Write-Host -ForegroundColor Yellow "vcpkg integration module not found at $VcpkgModpath"
 }
 
 New-Alias -Name vim -Value nvim
