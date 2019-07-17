@@ -80,6 +80,9 @@ Custom prompt functions are loaded in as constants to get the same behaviour
     Microsoft.PowerShell.Utility\Write-Host $pwd.ProviderPath -NoNewLine -ForegroundColor Green
     Microsoft.PowerShell.Utility\Write-Host " :: [ $([System.DateTime]::Now) ]" -NoNewLine -ForegroundColor Yellow
     checkGit($pwd.ProviderPath)
+    if ($Env:CONDA_PROMPT_MODIFIER) {
+        Write-Host -NoNewline -ForegroundColor "DarkGray" " $($Env:CONDA_PROMPT_MODIFIER)"
+    }
     Microsoft.PowerShell.Utility\Write-Host "`nλ " -NoNewLine -ForegroundColor "DarkGray"
     $global:LASTEXITCODE = $realLASTEXITCODE
     return " "
