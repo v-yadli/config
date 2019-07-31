@@ -143,9 +143,9 @@ if (Get-Item $VcpkgModpath -ErrorAction SilentlyContinue) {
     Write-Host -ForegroundColor Yellow "vcpkg integration module not found at $VcpkgModpath"
 }
 
-New-Alias -Name vim -Value nvim
-New-Alias -Name vi -Value nvim
-New-Alias -Name gvim -Value "C:\Tools\fvim\fvim.exe"
+New-Alias -Name vim -Value 'nvr -l'
+New-Alias -Name vi -Value 'nvr -l'
+New-Alias -Name gvim -Value 'nvr -l'
 Set-Alias -Name Expand-Archive -Value Microsoft.PowerShell.Archive\Expand-Archive
 Set-Alias -Name ls -Value Get-ChildItemColor -Option AllScope
 
