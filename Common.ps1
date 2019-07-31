@@ -13,7 +13,7 @@ Custom prompt functions are loaded in as constants to get the same behaviour
     if ($Env:CONDA_PROMPT_MODIFIER) {
         Write-Host -NoNewline -ForegroundColor "DarkGray" " $($Env:CONDA_PROMPT_MODIFIER)"
     }
-    Microsoft.PowerShell.Utility\Write-Host "`nλ " -NoNewLine -ForegroundColor "DarkGray"
+    Microsoft.PowerShell.Utility\Write-Host "`n>>" -NoNewLine -ForegroundColor "DarkGray"
     $global:LASTEXITCODE = $realLASTEXITCODE
     return " "
 }
@@ -46,4 +46,37 @@ if (Get-Module PSReadline -ErrorAction "SilentlyContinue") {
     Set-PSReadlineKeyHandler -Key Ctrl+e -Function EndOfLine
     Set-PSReadlineKeyHandler -Key Ctrl+n -Function NextHistory
     Set-PSReadlineKeyHandler -Key Ctrl+p -Function PreviousHistory
+}
+
+Function Pull-Profile()
+{
+    $profileDir = (Get-Item $PROFILE).Directory
+    $configDir = "~\config\"
+    Push-Location $configDir
+    git pull
+    $scripts = Get-ChildItem $configDir *.ps1
+    foreach($s in $scripts)
+    {
+        Copy-Item -Path "$s.FullName" -Destination "$profileDir"
+    }
+    Pop-Location
+    . $PROFILE
+    Write-Host "New profile loaded."
+}
+
+Function Push-Profile()
+{
+    $profileDir = (Get-Item $PROFILE).Directory
+    $configDir = (Get-Item "~\git\config\")
+    $scripts = Get-ChildItem $profileDir *.ps1
+    foreach($s in $scripts)
+    {
+        Write-Host "Writing" $s.FullName "to" $configDir
+        Copy-Item -Path $s.FullName -Destination $configDir
+    }
+    Push-Location $configDir
+    git add -A
+    git commit -m "update ps1 profile"
+    git push
+    Pop-Location
 }
