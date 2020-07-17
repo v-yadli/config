@@ -47,3 +47,6 @@ sudo -u $THIS_USER git submodule update --recursive
 cd $HOME
 sudo -u $THIS_USER ln -s $HOME/git/config/tmux/.tmux.conf ./
 sudo -u $THIS_USER ln -s $HOME/git/config/tmux/.tmux ./
+
+curl -s https://install-node.now.sh | bash -s -- -y
+rm ~/.wget-hst
