@@ -41,6 +41,11 @@ sudo -u $THIS_USER $HOME/anaconda3/bin/pip install python-language-server
 sudo -u $THIS_USER $HOME/anaconda3/bin/pip install argcomplete
 sudo -u $THIS_USER git clone https://github.com/v-yadli/vimrc -b nvim $HOME/.config/nvim
 sudo -u $THIS_USER nvim +PlugInstall +qall
+if [ ! -d $HOME/git/config ]
+then
+  sudo -u $THIS_USER mkdir -p $HOME/git
+  sudo -u $THIS_USER git clone https://github.com/v-yadli/config $HOME/git/config
+fi
 cd $HOME/git/config 
 sudo -u $THIS_USER git submodule init 
 sudo -u $THIS_USER git submodule update --recursive
