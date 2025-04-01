@@ -13,3 +13,6 @@
 [submodule "tmux/.tmux/plugins/tmux-mem-cpu-load"]
     path = tmux/.tmux/plugins/tmux-mem-cpu-load
     url = https://github.com/thewtex/tmux-mem-cpu-load.git
+[submodule "tmux/.tmux/plugins/tmux-net-speed"]
+	path = tmux/.tmux/plugins/tmux-net-speed
+	url = https://git::@github.com/tmux-plugins/tmux-net-speed
