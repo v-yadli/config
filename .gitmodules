@@ -16,3 +16,6 @@
 [submodule "tmux/.tmux/plugins/tmux-net-speed"]
 	path = tmux/.tmux/plugins/tmux-net-speed
 	url = https://git::@github.com/tmux-plugins/tmux-net-speed
+[submodule "tmux/.tmux/plugins/tmux-yank"]
+	path = tmux/.tmux/plugins/tmux-yank
+	url = https://github.com/tmux-plugins/tmux-yank
